@@ -32,13 +32,20 @@
         {{# output.page_doc_link }}
            {{! <p class="helplink">{{{ output.page_doc_link }}{{!</p>}}
         {{/ output.page_doc_link }}
-        <a class="navbar-brand logo mr-md-3" id="logo" href="https://lais.huol.ufrn.br"><img alt="logo" src="{{config.wwwroot}}/theme/colors/pix/logo-2.png" style="filter: brightness(0) invert(1);"></a>
-        <div class="login-footer"> 
-        {{{ output.login_info }}} 
+        <div class="requisitos">
+        <ul class="link-lais">
+            <li><a class="navbar-brand logo mr-md-3" href="https://lais.huol.ufrn.br"><img alt="logo" src="{{config.wwwroot}}/theme/colors/pix/logo-2.png" style="filter: brightness(0) invert(1);"></a></li>
+            <li><a class="navbar-brand logo mr-md-3" href="https://lais.huol.ufrn.br">Acesse</a></li>
+        </ul>
+
+        <ul class="user-footer"> 
+            <li class="navbar-brand logo mr-md-3"><h2>Usuário(s) logado(s):</h2></li>
+            {{{ output.user_ativo }}}
+        </ul>
         </div>
+        {{!{ output.login_info }} 
         <div class="tool_usertours-resettourcontainer"></div>
-        {{{ output.home_link }}}
-        
+        {{!{ output.home_link }}
         <nav class="nav navbar-nav d-md-none" aria-label="{{#str}}custommenu, admin{{/str}}">
             {{# output.custom_menu_flat }}
                 <ul class="list-unstyled pt-3">

@@ -15,15 +15,21 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * colors.
+ * Code to be executed after the plugin's database scheme has been installed is defined here.
  *
- * @package    theme_colors
- * @copyright  2016 Frédéric Massart
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package     theme_colors
+ * @category    upgrade
+ * @copyright   2020 Mateus Abrantes <mateus.abrantes@lais.huol.ufrn.br>
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
+require_once($CFG->dirroot . '/theme/colors/db/upgrade.php');
 
-$plugin->version   = 2021051702;
-$plugin->requires  = 2021051100;
-$plugin->component = 'theme_colors';
+/**
+ * Custom code to be run on installing the plugin.
+ */
+function xmldb_theme_colors_install()
+{
+    xmldb_theme_colors_upgrade(NULL);
+}

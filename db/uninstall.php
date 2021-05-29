@@ -15,15 +15,20 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * colors.
+ * Code that is executed before the tables and data are dropped during the plugin uninstallation.
  *
- * @package    theme_colors
- * @copyright  2016 Frédéric Massart
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package     theme_colors
+ * @category    upgrade
+ * @copyright   2020 Mateus Abrantes <mateus.abrantes@lais.huol.ufrn.br>
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2021051702;
-$plugin->requires  = 2021051100;
-$plugin->component = 'theme_colors';
+/**
+ * Custom uninstallation procedure.
+ */
+function xmldb_theme_colors_uninstall() {
+
+    return true;
+}

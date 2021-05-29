@@ -18876,8 +18876,31 @@ body {
     flex-direction: column; }
     #page-wrapper #page #page-content {
       flex: 1 0 auto; }
-  #page-wrapper #page-footer {
-    flex-shrink: 0; }
+  #page-wrapper #page-footer{
+    flex-shrink: 0; }  
+  #page-wrapper #page-footer .requisitos{
+    display: flex;
+    justify-content: center;
+  }    
+  #page-wrapper #page-footer .link-lais{
+    text-align: center;
+    list-style-type: none;
+    list-style: none;
+    width: 35%;
+    border:solid 1px;
+    border-radius:10px;
+    padding: 10px;
+    margin-right: 40px;
+  }
+  #page-wrapper #page-footer .user-footer{
+    text-align: center;
+    list-style-type: none;
+    list-style: none;
+    width: 37%;
+    border:solid 1px;
+    border-radius:10px;
+    padding: 10px;
+  }
 
 .popover-region {
   position: relative; }

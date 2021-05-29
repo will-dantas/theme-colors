@@ -15,15 +15,25 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * colors.
+ * Plugin upgrade helper functions are defined here.
  *
- * @package    theme_colors
- * @copyright  2016 Frédéric Massart
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package     theme_colors
+ * @category    upgrade
+ * @copyright   2020 Mateus Abrantes <mateus.abrantes@lais.huol.ufrn.br>
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2021051702;
-$plugin->requires  = 2021051100;
-$plugin->component = 'theme_colors';
+/**
+ * Helper function used by the upgrade.php file.
+ */
+function theme_colors_helper_function() {
+    global $DB;
+
+    // Please note that you should always be performing any task using raw (low
+    // level) database access exclusively, avoiding any use of the Moodle APIs.
+    //
+    // For more information please read the available Moodle documentation:
+    // https://docs.moodle.org/dev/Upgrade_API
+}

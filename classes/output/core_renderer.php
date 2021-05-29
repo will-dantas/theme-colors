@@ -42,4 +42,23 @@ class core_renderer extends \core_renderer {
         return $this->render_single_button($button);
     }
 
+    public function user_ativo()
+    {
+        global $DB;
+
+        $returnstr = "";
+        $data = time() - (5*60);
+        $sql = "SELECT DISTINCT u.id, u.firstname, u.lastname FROM mdl_user u INNER JOIN mdl_logstore_standard_log  l ON u.id = l.userid WHERE l.timecreated > $data";
+        $users = $DB->get_records_sql($sql);
+
+        $cont=0;
+        foreach ($users as $user){
+            $cont++;
+            $returnstr .= '<li class="navbar-brand logo mr-md-3"><a class="navbar-brand logo mr-md-3" href="/moodle/user/profile.php?user='.$user->firstname ." ".$user->lastname.'">'.$user->firstname ." ".$user->lastname.'</a></li>';    
+        }
+        
+        $returnstr .= '<li class="navbar-brand logo mr-md-3"><h2>Total de usuários ativos: '.$cont.'</h2></li>';
+        
+        return $returnstr;
+    }
 }
