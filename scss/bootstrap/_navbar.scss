@@ -15,6 +15,7 @@
 // Provide a static navbar from which we expand to create full-width, fixed, and
 // other navbar variations.
 
+
 .navbar {
   position: relative;
   display: flex;
@@ -22,7 +23,7 @@
   align-items: center;
   justify-content: space-between; // space out brand from logo
   padding: $navbar-padding-y $navbar-padding-x;
-
+  background-color: $navbar-header-color; // background header color
   // Because flex properties aren't inherited, we need to redeclare these first
   // few properties so that content nested within behave properly.
   %container-flex-properties {

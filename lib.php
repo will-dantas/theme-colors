@@ -134,6 +134,7 @@ function theme_colors_get_pre_scss($theme) {
     $configurable = [
         // Config key => [variableName, ...].
         'brandcolor' => ['primary'],
+        'navbarheadercolor' => 'navbar-header-color'
     ];
 
     // Prepend variables first.

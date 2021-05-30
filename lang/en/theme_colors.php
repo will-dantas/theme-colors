@@ -51,3 +51,5 @@ $string['privacy:metadata:preference:draweropennav'] = 'The user\'s preference f
 $string['privacy:drawernavclosed'] = 'The current preference for the navigation drawer is closed.';
 $string['privacy:drawernavopen'] = 'The current preference for the navigation drawer is open.';
 $string['totop'] = 'Go to top';
+$string['navbarheadercolor'] = 'Navbar header color';
+$string['navbarheadercolor_desc'] = 'The top navbar header color';

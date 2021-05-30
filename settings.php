@@ -74,6 +74,15 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
+    // Variable $navbar-header-color.
+    // We use an empty default value because the default colour should come from the preset.
+    $name = 'theme_colors/navbarheadercolor';
+    $title = get_string('navbarheadercolor', 'theme_colors');
+    $description = get_string('navbarheadercolor_desc', 'theme_colors');
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, '');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
     // Must add the page after definiting all the settings!
     $settings->add($page);
 
