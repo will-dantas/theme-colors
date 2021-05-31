@@ -128,7 +128,7 @@ function theme_colors_get_precompiled_css() {
  * @return array
  */
 function theme_colors_get_pre_scss($theme) {
-    global $CFG;
+    global $DB,$CFG;
 
     $scss = '';
     $configurable = [
@@ -138,7 +138,7 @@ function theme_colors_get_pre_scss($theme) {
     ];
 
     // Prepend variables first.
-    foreach ($configurable as $configkey => $targets) {
+    foreach ($configurable as $configkey => $targets){
         $value = isset($theme->settings->{$configkey}) ? $theme->settings->{$configkey} : null;
         if (empty($value)) {
             continue;
@@ -147,7 +147,7 @@ function theme_colors_get_pre_scss($theme) {
             $scss .= '$' . $target . ': ' . $value . ";\n";
         }, (array) $targets);
     }
-
+    
     // Prepend pre-scss.
     if (!empty($theme->settings->scsspre)) {
         $scss .= $theme->settings->scsspre;
@@ -155,3 +155,4 @@ function theme_colors_get_pre_scss($theme) {
 
     return $scss;
 }
+

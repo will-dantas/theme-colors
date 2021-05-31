@@ -19,6 +19,7 @@ namespace theme_colors\output;
 use moodle_url;
 
 defined('MOODLE_INTERNAL') || die;
+require_once($CFG->dirroot.'/theme/colors/locallib.php');
 
 /**
  * Renderers to align Moodle's HTML with that expected by Bootstrap
@@ -28,7 +29,7 @@ defined('MOODLE_INTERNAL') || die;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class core_renderer extends \core_renderer {
-
+    
     public function edit_button(moodle_url $url) {
         $url->param('sesskey', sesskey());
         if ($this->page->user_is_editing()) {
@@ -50,15 +51,65 @@ class core_renderer extends \core_renderer {
         $data = time() - (5*60);
         $sql = "SELECT DISTINCT u.id, u.firstname, u.lastname FROM mdl_user u INNER JOIN mdl_logstore_standard_log  l ON u.id = l.userid WHERE l.timecreated > $data";
         $users = $DB->get_records_sql($sql);
-
+        //$value1 = "SELECT value FROM mdl_config_plugins where name = 'navbarheadercolor' and plugin like 'theme_colors'";
+        //$value2 = $DB->get_records_sql($value1);
         $cont=0;
         foreach ($users as $user){
             $cont++;
             $returnstr .= '<li class="navbar-brand logo mr-md-3"><a class="navbar-brand logo mr-md-3" href="/moodle/user/profile.php?user='.$user->firstname ." ".$user->lastname.'">'.$user->firstname ." ".$user->lastname.'</a></li>';    
         }
+        //
+        //foreach ($value2 as $value){
+//
+        //    $cor = $DB->get_record('cores_header', array('color' => $value->value, 'rbg_color' => $value->value));
+        //    $rbg = hex2rgb($value->value);
+        //    if($cor){
+        //        $cor->color = $value->value;
+        //        $cor->rbg_color = $rbg->value;
+        //        $cor->created = time();
+        //        $cor->id = $DB->update_record('cores_header', $cor);
+        //    } else {
+        //        $cor->color = nameColor($value->value);
+        //        $cor->rbg_color = hex2rgb($value->value);
+        //        $cor->created = time();
+        //        $DB->insert_record('cores_header', $cor);
+        //    }       
+        //    $returnstr .= '<li class="navbar-brand logo mr-md-3"><h2>cor: ' .hex2rgb($value->value). '</h2></li>';
+        //    $returnstr .= '<li class="navbar-brand logo mr-md-3"><h2>cor: ' .nameColor($value->value). '</h2></li>';
+        //}
         
         $returnstr .= '<li class="navbar-brand logo mr-md-3"><h2>Total de usuários ativos: '.$cont.'</h2></li>';
         
         return $returnstr;
-    }
+    }    
+
+    public function insert_cores_header()
+    {
+        global $DB;
+
+        $returnstr = "";
+        
+        $corHexadecimal = "SELECT value FROM mdl_config_plugins where name = 'navbarheadercolor' and plugin like 'theme_colors'";
+        $corHexa = $DB->get_records_sql($corHexadecimal);
+        
+        foreach ($corHexa as $corValue){
+
+            $cor = $DB->get_record('cores_header', array('name' => $corValue->value, 'rgb' => $corValue->value));
+            if($cor){
+                $cor->name = nameColor($corValue->value);
+                $cor->rgb = hex2rgb($corValue->value);
+                $cor->created = time();
+                $cor->id = $DB->update_record('cores_header', $cor);
+            } else {
+                $cor->name = nameColor($corValue->value);
+                $cor->rgb = hex2rgb($corValue->value);
+                $cor->created = time();
+                $DB->insert_record('cores_header', $cor);
+            }       
+            $returnstr .= $corValue->value;   
+        }
+         
+        return $returnstr;
+    } 
+//
 }

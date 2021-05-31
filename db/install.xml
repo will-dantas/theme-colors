@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="theme/colors/db" VERSION="2021051703" COMMENT="XMLDB file for Moodle theme/colors"
+<XMLDB PATH="theme/colors/db" VERSION="2021051712" COMMENT="XMLDB file for Moodle theme/colors"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
     <TABLES>
-     <!--Tabela para registrar as ANOTAÇÕES dos alunos wide_notes nos usuários-->
         <TABLE NAME="cores_header" COMMENT="Tabela registra as cores do header do tea">
             <FIELDS>
                 <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-                <FIELD NAME="color" SEQUENCE="false" TYPE="char" NOTNULL="false" COMMENT="Cor das anotacoes" DEFAULT="white"/>
-                <FIELD NAME="rbg_color" SEQUENCE="false" TYPE="int" LENGTH="10" NOTNULL="false" COMMENT="ID do contexto do módulo"/>
-                <FIELD NAME="content" SEQUENCE="false" TYPE="text" NOTNULL="false" COMMENT="Comentário do usuário" />
-                <FIELD NAME="usermodified" SEQUENCE="false" TYPE="int" LENGTH="10" NOTNULL="true" />
+                <FIELD NAME="name" SEQUENCE="false" TYPE="text" NOTNULL="false" COMMENT="Cor das anotacoes" DEFAULT="white"/>
+                <FIELD NAME="rgb" SEQUENCE="false" TYPE="text" LENGTH="10" NOTNULL="false" COMMENT="RBG da cor"/>
                 <FIELD NAME="created" SEQUENCE="false" TYPE="int" LENGTH="10" NOTNULL="false" />
-                <FIELD NAME="updated" SEQUENCE="false" TYPE="int" LENGTH="10" NOTNULL="false" />
             </FIELDS>
             <KEYS>
                 <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
