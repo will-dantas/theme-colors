@@ -14185,7 +14185,7 @@ span.editinstructions {
 [data-region="drawer"] {
   position: fixed;
   width: 285px;
-  top: 50px;
+  top: 80px !important;
   height: calc(100% - 50px);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -14220,7 +14220,7 @@ span.editinstructions {
     margin-bottom: 0; }
 
 #page {
-  margin-top: 50px; }
+  margin-top: 84px !important; }
 
 .pagelayout-embedded #page {
   margin-top: 0; }

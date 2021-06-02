@@ -45,5 +45,11 @@ function xmldb_theme_colors_upgrade($oldversion) {
     // Documentation for the XMLDB Editor can be found at:
     // https://docs.moodle.org/dev/XMLDB_editor
     
-    //return true;
+    if (empty($DB->get_record('config_plugins', array('plugin' => 'theme_colors', 'name' => 'navbarheadercolor',)))) {
+        echo '<div class="alert alert-success">A tabela "cores_header" não existe. A tabela sera criada.</div>';        
+    } else {
+        echo '<div class="alert alert-info">A tabela "cores_header" ja exite.</div>';
+        $cor = $DB->get_record('cores_header', array('name' => $corHexa, 'rgb' => $corHexa));
+    } 
+    return true;
 }

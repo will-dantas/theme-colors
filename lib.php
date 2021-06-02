@@ -23,7 +23,7 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
-
+require_once($CFG->dirroot.'/theme/colors/locallib.php');
 /**
  * Post process the CSS tree.
  *
@@ -155,4 +155,27 @@ function theme_colors_get_pre_scss($theme) {
 
     return $scss;
 }
-
+// funcao que interage com o callback atualizando a tabela "cores_header"
+function insert_cores_header()
+{
+    global $DB;
+    
+    $corHexadecimal = "SELECT value FROM mdl_config_plugins where name = 'navbarheadercolor' and plugin like 'theme_colors'";
+    $corHexa = $DB->get_records_sql($corHexadecimal);
+    $cor = $DB->get_record('cores_header', array('name' => $corHexa, 'rgb' => $corHexa));
+    
+    foreach ($corHexa as $corValue){
+        if($cor){
+                $cor->name = nameColor($corValue->value);
+                $cor->rgb = hex2rgb($corValue->value);
+                $cor->created = time();
+                $cor->id = $DB->update_record('cores_header', $cor);
+        }else {
+                $cor->name = nameColor($corValue->value);
+                $cor->rgb = hex2rgb($corValue->value);
+                $cor->created = time();
+                $DB->insert_record('cores_header', $cor);
+        }
+    }  
+    return true;           
+}

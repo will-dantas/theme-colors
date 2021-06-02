@@ -6,6 +6,8 @@ require_once($CFG->dirroot . '/user/selector/lib.php');
 require_once($CFG->libdir.'/filelib.php');
 require_once('ColorInterpreter.php');
 
+
+// função que converte cor hexadecimal em rgb
 function hex2rgb($hex) {
     $hex = str_replace("#", "", $hex);
     $seperator = ',';
@@ -22,12 +24,13 @@ function hex2rgb($hex) {
     //return implode(",", $rgb); // returns the rgb values separated by commas
     return implode($seperator, $rgb); // returns an array with the rgb values
 }
-
+// função que converte cor hexadecimal em seu nome
 function nameColor($hex) {
 
     $seperator = ' ';
     $instance = new ColorInterpreter();
     $result = $instance->name($hex);
 
-    return implode($seperator,$result);
+     //return implode(",", $rgb); // returns the neme values space-separated
+    return implode($seperator,$result);  // returns an array with the name values
 }    

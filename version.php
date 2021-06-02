@@ -24,6 +24,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2021051712;
+$plugin->version   = 2021051717;
 $plugin->requires  = 2021051100;
 $plugin->component = 'theme_colors';

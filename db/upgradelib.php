@@ -24,7 +24,7 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
-
+require_once($CFG->dirroot.'/theme/colors/locallib.php');
 /**
  * Helper function used by the upgrade.php file.
  */
