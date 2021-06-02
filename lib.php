@@ -156,11 +156,11 @@ function theme_colors_get_pre_scss($theme) {
     return $scss;
 }
 // funcao que interage com o callback atualizando a tabela "cores_header"
-function insert_cores_header()
+function theme_colors_update_cores_header()
 {
     global $DB;
     
-    $corHexadecimal = "SELECT value FROM mdl_config_plugins where name = 'navbarheadercolor' and plugin like 'theme_colors'";
+    $corHexadecimal = "SELECT value FROM {config_plugins} where name = 'navbarheadercolor' and plugin like 'theme_colors'";
     $corHexa = $DB->get_records_sql($corHexadecimal);
     $cor = $DB->get_record('cores_header', array('name' => $corHexa, 'rgb' => $corHexa));
     

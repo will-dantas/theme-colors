@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="theme/colors/db" VERSION="2021051717" COMMENT="XMLDB file for Moodle theme/colors"
+<XMLDB PATH="theme/colors/db" VERSION="2021051724" COMMENT="XMLDB file for Moodle theme/colors"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >

@@ -43,13 +43,29 @@ class core_renderer extends \core_renderer {
         return $this->render_single_button($button);
     }
 
+    public function custom_header(){
+        global $DB;
+
+        $returnstr = "";
+        $sql = "SELECT name FROM {cores_header} ORDER BY ID DESC LIMIT 1";
+        $corAtual = $DB->get_records_sql($sql);
+        foreach ($corAtual as $atual){
+            $returnstr .= '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item">Cor atual: ' .$atual->name. '</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" style="text-align:center" href="/moodle/admin/settings.php?section=themesettingcolors">Alterar cor</a>
+                          </div>';    
+        }            
+        return $returnstr;
+    }
+
     public function user_ativo()
     {
         global $DB;
 
         $returnstr = "";
         $data = time() - (5*60);
-        $sql = "SELECT DISTINCT u.id, u.firstname, u.lastname FROM mdl_user u INNER JOIN mdl_logstore_standard_log  l ON u.id = l.userid WHERE l.timecreated > $data";
+        $sql = "SELECT DISTINCT u.id, u.firstname, u.lastname FROM {user} as u INNER JOIN {logstore_standard_log} as l ON u.id = l.userid WHERE l.timecreated > $data";
         $users = $DB->get_records_sql($sql);
         $cont=0;
         foreach ($users as $user){

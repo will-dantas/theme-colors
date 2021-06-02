@@ -81,7 +81,7 @@ if ($ADMIN->fulltree) {
     $description = get_string('navbarheadercolor_desc', 'theme_colors');
     $setting = new admin_setting_configcolourpicker($name, $title, $description, '');
     $setting->set_updatedcallback('theme_reset_all_caches'); 
-    $setting->set_updatedcallback('insert_cores_header'); // callback para atualizar "cores_header"
+    $setting->set_updatedcallback('theme_colors_update_cores_header'); // callback para atualizar "cores_header"
     $page->add($setting);
 
     // Must add the page after definiting all the settings!

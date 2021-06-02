@@ -68,7 +68,13 @@
 
             <ul class="navbar-nav d-none d-md-flex">
                 <!-- custom_menu -->
-                {{{ output.custom_menu }}}
+                <div class="dropdown">
+                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Cor Header
+                   </button>
+                   {{{ output.custom_header }}}
+                </div>
+                
                 <!-- page_heading_menu -->
                 {{{ output.page_heading_menu }}}
             </ul>
